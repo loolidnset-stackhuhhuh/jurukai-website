@@ -1,0 +1,57 @@
+
+[
+  {
+    "name": "antinuke",
+    "usage": ",antinuke",
+    "category": "Anti-Nuke",
+    "description": "View and manage your server's Anti-Nuke protection."
+  },
+  {
+    "name": "antinuke enable",
+    "usage": ",antinuke enable",
+    "category": "Anti-Nuke",
+    "description": "Enable Anti-Nuke protection for your server."
+  },
+  {
+    "name": "antinuke disable",
+    "usage": ",antinuke disable",
+    "category": "Anti-Nuke",
+    "description": "Disable Anti-Nuke protection."
+  },
+  {
+    "name": "antinuke admins",
+    "usage": ",antinuke admins",
+    "category": "Anti-Nuke",
+    "description": "Manage users authorized as Anti-Nuke administrators."
+  },
+  {
+    "name": "antinuke staff",
+    "usage": ",antinuke staff",
+    "category": "Anti-Nuke",
+    "description": "Manage Anti-Nuke staff access."
+  },
+  {
+    "name": "antinuke whitelist",
+    "usage": ",antinuke whitelist",
+    "category": "Anti-Nuke",
+    "description": "Manage trusted users and whitelist exceptions."
+  },
+  {
+    "name": "antinuke blacklist",
+    "usage": ",antinuke blacklist",
+    "category": "Anti-Nuke",
+    "description": "Manage users blocked from trusted access."
+  },
+  {
+    "name": "antinuke logs",
+    "usage": ",antinuke logs",
+    "category": "Anti-Nuke",
+    "description": "Configure Anti-Nuke logging."
+  },
+  {
+    "name": "antinuke punishment",
+    "usage": ",antinuke punishment",
+    "category": "Anti-Nuke",
+    "description": "Configure the punishment used when protection is triggered."
+  }
+]
