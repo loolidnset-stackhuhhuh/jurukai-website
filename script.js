@@ -45,7 +45,7 @@ function renderCommands() {
     return matchesSearch && matchesCategory;
   });
 
-  if (results.length === 0) {
+  if (!results.length) {
     commandGrid.innerHTML =
       '<div class="empty-state">No commands found. Try another search.</div>';
     return;
@@ -68,23 +68,18 @@ async function loadCommands() {
   try {
     const response = await fetch("./commands.json");
 
-    if (!response.ok) {
-      throw new Error("Command file could not be loaded.");
-    }
+    if (!response.ok) throw new Error("Could not load commands.");
 
     const data = await response.json();
 
-    if (!Array.isArray(data)) {
-      throw new Error("Invalid command list.");
-    }
+    if (!Array.isArray(data)) throw new Error("Invalid command list.");
 
     commands = data;
     renderCommands();
   } catch (error) {
     commandGrid.innerHTML =
       '<div class="empty-state">Unable to load commands right now.</div>';
-
-    console.error("Jurukai command directory:", error);
+    console.error(error);
   }
 }
 
@@ -95,7 +90,6 @@ if (searchInput) {
 if (filters) {
   filters.addEventListener("click", event => {
     const button = event.target.closest("button[data-filter]");
-
     if (!button) return;
 
     activeFilter = button.dataset.filter || "all";
@@ -109,43 +103,46 @@ if (filters) {
 }
 
 // ------------------------------
-// BACKGROUND PARTICLES
+// OPTIMIZED PARTICLES
 // ------------------------------
 
 function startParticles() {
   const canvas = document.getElementById("particles");
-
   if (!canvas) return;
 
-  const context = canvas.getContext("2d");
-
-  if (!context) return;
+  const ctx = canvas.getContext("2d", { alpha: true });
+  if (!ctx) return;
 
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
+  const mobile = window.innerWidth < 700;
+
   let width = 0;
   let height = 0;
   let particles = [];
   let animationFrame = null;
+  let lastFrame = 0;
 
-  const connectionDistance = 135;
-  const particleSpeed = reducedMotion ? 0 : 0.22;
+  const frameInterval = 1000 / 30;
+  const connectionDistance = 115;
+  const connectionDistanceSquared =
+    connectionDistance * connectionDistance;
 
   function createParticle() {
     return {
       x: Math.random() * width,
       y: Math.random() * height,
-      size: Math.random() * 1.6 + 0.5,
-      speedX: (Math.random() - 0.5) * particleSpeed,
-      speedY: (Math.random() - 0.5) * particleSpeed,
-      opacity: Math.random() * 0.45 + 0.15
+      size: Math.random() * 1.2 + 0.5,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      opacity: Math.random() * 0.35 + 0.15
     };
   }
 
   function resizeCanvas() {
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 1.5);
 
     width = window.innerWidth;
     height = window.innerHeight;
@@ -156,52 +153,65 @@ function startParticles() {
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
 
-    context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-    const particleCount = Math.min(
-      85,
-      Math.max(25, Math.floor((width * height) / 14000))
+    const isMobile = width < 700;
+    const count = Math.min(
+      isMobile ? 28 : 48,
+      Math.max(isMobile ? 16 : 24, Math.floor(
+        (width * height) / (isMobile ? 26000 : 22000)
+      ))
     );
 
-    particles = Array.from(
-      { length: particleCount },
-      createParticle
-    );
-
+    particles = Array.from({ length: count }, createParticle);
     drawParticles();
   }
 
   function drawParticles() {
-    context.clearRect(0, 0, width, height);
+    ctx.clearRect(0, 0, width, height);
 
-    // Draw connecting lines.
+    // Move particles.
+    if (!reducedMotion) {
+      for (const particle of particles) {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        if (particle.x < 0) particle.x = width;
+        if (particle.x > width) particle.x = 0;
+        if (particle.y < 0) particle.y = height;
+        if (particle.y > height) particle.y = 0;
+      }
+    }
+
+    // Draw connecting lines without expensive distance calculations.
+    ctx.lineWidth = 0.6;
+
     for (let i = 0; i < particles.length; i++) {
+      const a = particles[i];
+
       for (let j = i + 1; j < particles.length; j++) {
-        const first = particles[i];
-        const second = particles[j];
+        const b = particles[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const distanceSquared = dx * dx + dy * dy;
 
-        const dx = first.x - second.x;
-        const dy = first.y - second.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < connectionDistance) {
+        if (distanceSquared < connectionDistanceSquared) {
           const opacity =
-            (1 - distance / connectionDistance) * 0.13;
+            (1 - distanceSquared / connectionDistanceSquared) * 0.12;
 
-          context.beginPath();
-          context.moveTo(first.x, first.y);
-          context.lineTo(second.x, second.y);
-          context.strokeStyle = `rgba(115, 105, 255, ${opacity})`;
-          context.lineWidth = 0.7;
-          context.stroke();
+          ctx.strokeStyle = `rgba(125, 115, 255, ${opacity})`;
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.stroke();
         }
       }
     }
 
-    // Draw the particles.
-    particles.forEach(particle => {
-      context.beginPath();
-      context.arc(
+    // Draw simple particles without glow effects.
+    for (const particle of particles) {
+      ctx.beginPath();
+      ctx.arc(
         particle.x,
         particle.y,
         particle.size,
@@ -209,53 +219,52 @@ function startParticles() {
         Math.PI * 2
       );
 
-      context.fillStyle =
-        `rgba(155, 145, 255, ${particle.opacity})`;
-
-      context.shadowBlur = 12;
-      context.shadowColor = "rgba(110, 95, 255, 0.5)";
-      context.fill();
-      context.shadowBlur = 0;
-
-      if (!reducedMotion) {
-        particle.x += particle.speedX;
-        particle.y += particle.speedY;
-
-        if (particle.x < -10) particle.x = width + 10;
-        if (particle.x > width + 10) particle.x = -10;
-        if (particle.y < -10) particle.y = height + 10;
-        if (particle.y > height + 10) particle.y = -10;
-      }
-    });
+      ctx.fillStyle = `rgba(165, 155, 255, ${particle.opacity})`;
+      ctx.fill();
+    }
   }
 
-  function animate() {
-    drawParticles();
+  function animate(timestamp) {
+    if (timestamp - lastFrame >= frameInterval) {
+      drawParticles();
+      lastFrame = timestamp;
+    }
+
+    animationFrame = requestAnimationFrame(animate);
+  }
+
+  function stopAnimation() {
+    if (animationFrame !== null) {
+      cancelAnimationFrame(animationFrame);
+      animationFrame = null;
+    }
+  }
+
+  function startAnimation() {
+    if (reducedMotion || document.hidden || animationFrame !== null) {
+      return;
+    }
+
+    lastFrame = 0;
     animationFrame = requestAnimationFrame(animate);
   }
 
   resizeCanvas();
-
-  if (!reducedMotion) {
-    animate();
-  }
+  startAnimation();
 
   window.addEventListener("resize", resizeCanvas);
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
-      if (animationFrame !== null) {
-        cancelAnimationFrame(animationFrame);
-        animationFrame = null;
-      }
-    } else if (!reducedMotion && animationFrame === null) {
-      animate();
+      stopAnimation();
+    } else {
+      startAnimation();
     }
   });
 }
 
 // ------------------------------
-// START WEBSITE
+// START
 // ------------------------------
 
 loadCommands();
