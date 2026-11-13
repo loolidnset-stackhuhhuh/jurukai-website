@@ -4,274 +4,215 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080f1d">
-  <meta name="description" content="Jurukai — powerful Discord moderation, community tools, and Anti-Nuke protection.">
-  <title>Jurukai — Discord, Under Control</title>
+  <meta name="theme-color" content="#08090d">
+  <meta name="description" content="Jurukai is an all-in-one Discord bot for moderation, security, and community management.">
+  <title>Jurukai — Your Discord, Elevated</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<header class="navbar">
-  <a href="#home" class="logo">
-    <span class="logo-icon">J</span>
-    JURUKAI
-  </a>
+  <canvas id="particles"></canvas>
+  <div class="background-glow"></div>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#commands">Commands</a>
-    <a href="#features">Features</a>
-    <a href="#antinuke">Anti-Nuke</a>
-    <a href="#support">Support</a>
-  </nav>
+  <header class="navbar">
+    <a href="#home" class="logo">
+      <span class="logo-mark">J</span>
+      <span>jurukai</span>
+    </a>
 
-  <a class="nav-button" href="#invite">Add to Discord ↗</a>
-</header>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#commands">Commands</a>
+      <a href="#security">Security</a>
+      <a href="#support">Support</a>
+    </nav>
 
-<main>
+    <a href="#commands" class="nav-button">Explore Jurukai <span>↗</span></a>
+  </header>
 
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow">
-        <span class="blue-dot"></span>
-        YOUR SERVER. YOUR RULES.
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-badge">
+        <span class="status-dot"></span>
+        THE ALL-IN-ONE DISCORD BOT
       </div>
 
       <h1>
-        Discord,<br>
-        <span>under control.</span>
+        Your server.<br>
+        <span>Without limits.</span>
       </h1>
 
       <p>
-        Meet Jurukai — the all-in-one Discord bot built to
-        protect, manage, and bring your community together.
+        Meet Jurukai. Powerful moderation, advanced server security,
+        and everything your community needs — all in one place.
       </p>
 
-      <div class="hero-buttons">
-        <a href="#commands" class="primary-button">Explore commands →</a>
-        <a href="#features" class="secondary-button">Discover features</a>
+      <div class="hero-actions">
+        <a href="#features" class="button-primary">Discover Jurukai <span>→</span></a>
+        <a href="#commands" class="button-secondary">View commands</a>
       </div>
 
       <div class="hero-caption">
-        <span></span>
-        Powerful tools. Simple commands. One bot.
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="visual-glow"></div>
-
-      <div class="floating-card card-top">
-        <span class="floating-icon">✦</span>
-        <div>
-          <strong>Server protection</strong>
-          <small>Stay one step ahead.</small>
-        </div>
+        Built for communities that expect more.
       </div>
 
-      <div class="bot-preview">
-        <div class="bot-header">
-          <div class="bot-avatar">J</div>
-          <div>
-            <strong>Jurukai</strong>
-            <small>BOT · ONLINE</small>
+      <div class="hero-orbit orbit-one"></div>
+      <div class="hero-orbit orbit-two"></div>
+    </section>
+
+    <section class="trust-strip">
+      <span>MODERATION</span>
+      <i>✦</i>
+      <span>SECURITY</span>
+      <i>✦</i>
+      <span>COMMUNITY</span>
+      <i>✦</i>
+      <span>MANAGEMENT</span>
+    </section>
+
+    <section class="content-section" id="features">
+      <div class="section-intro">
+        <span class="eyebrow">BUILT FOR YOUR COMMUNITY</span>
+        <h2>Everything you need.<br><span>Nothing you don't.</span></h2>
+        <p>
+          Keep your server organized, protected, and active
+          with tools designed to work together.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card feature-large">
+          <div class="card-art security-art">
+            <div class="orbit-ring"></div>
+            <div class="shield-symbol">◇</div>
+            <span class="art-label">SECURITY SYSTEM</span>
           </div>
-          <span class="dots">•••</span>
+          <div class="feature-card-content">
+            <span class="eyebrow">01 / PROTECTION</span>
+            <h3>Advanced Anti-Nuke</h3>
+            <p>
+              Protect your server against destructive actions
+              with configurable thresholds, trusted users,
+              blacklists, and logging.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="card-art moderation-art">
+            <div class="mini-window">
+              <span>MODERATION</span>
+              <div class="mini-line"></div>
+              <div class="mini-line short"></div>
+              <div class="mini-line"></div>
+            </div>
+          </div>
+          <div class="feature-card-content">
+            <span class="eyebrow">02 / CONTROL</span>
+            <h3>Moderation</h3>
+            <p>Keep your community safe and manageable.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <div class="card-art community-art">
+            <div class="community-symbol">✳</div>
+          </div>
+          <div class="feature-card-content">
+            <span class="eyebrow">03 / ENGAGEMENT</span>
+            <h3>Community tools</h3>
+            <p>Give members more ways to connect and interact.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="security-section" id="security">
+      <div class="security-copy">
+        <span class="eyebrow">SECURITY THAT MEANS BUSINESS</span>
+        <h2>Stay ahead of<br><span>the unexpected.</span></h2>
+        <p>
+          Jurukai Anti-Nuke gives server owners control over
+          protection settings, action thresholds, trusted users,
+          and security logs.
+        </p>
+        <a href="#commands" class="text-link">Explore Anti-Nuke commands →</a>
+      </div>
+
+      <div class="security-preview">
+        <div class="preview-top">
+          <span>JURUKAI / SECURITY</span>
+          <span class="preview-indicator">● CONFIGURABLE</span>
         </div>
-
-        <div class="preview-divider"></div>
-
-        <small class="preview-label">COMMAND PREVIEW</small>
-
-        <div class="command-preview">
-          <span>›</span> ,antinuke
+        <div class="preview-row">
+          <span class="preview-icon">◇</span>
+          <div><strong>Channel protection</strong><small>Create · Delete · Update</small></div>
+          <span class="preview-arrow">↗</span>
         </div>
+        <div class="preview-row">
+          <span class="preview-icon">⌑</span>
+          <div><strong>Role protection</strong><small>Create · Delete · Update</small></div>
+          <span class="preview-arrow">↗</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-icon">◎</span>
+          <div><strong>Member protection</strong><small>Ban · Kick · Bot additions</small></div>
+          <span class="preview-arrow">↗</span>
+        </div>
+        <div class="preview-row">
+          <span class="preview-icon">⌁</span>
+          <div><strong>Custom thresholds</strong><small>Choose your own action limits</small></div>
+          <span class="preview-arrow">↗</span>
+        </div>
+        <div class="preview-bottom">YOUR SERVER. YOUR CONFIGURATION.</div>
+      </div>
+    </section>
 
-        <p>Manage your server's protection settings.</p>
+    <section class="content-section command-section" id="commands">
+      <div class="section-intro">
+        <span class="eyebrow">THE COMMAND DIRECTORY</span>
+        <h2>One bot.<br><span>So many possibilities.</span></h2>
+        <p>Find the commands you need and explore what Jurukai can do.</p>
+      </div>
 
-        <div class="preview-tags">
-          <span>Moderation</span>
-          <span>Security</span>
+      <div class="command-toolbar">
+        <input id="commandSearch" type="search" placeholder="Search commands..." aria-label="Search commands">
+        <div class="filters" id="commandFilters">
+          <button class="active" data-filter="all">All</button>
+          <button data-filter="Moderation">Moderation</button>
+          <button data-filter="Anti-Nuke">Anti-Nuke</button>
+          <button data-filter="Community">Community</button>
+          <button data-filter="Utility">Utility</button>
         </div>
       </div>
 
-      <div class="floating-card card-bottom">
-        <span class="floating-icon">⬡</span>
-        <div>
-          <strong>Built for communities</strong>
-          <small>Moderation · Security · More</small>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="ticker">
-    MODERATION <span>✦</span>
-    SERVER SECURITY <span>✦</span>
-    COMMUNITY TOOLS <span>✦</span>
-    CUSTOM COMMANDS <span>✦</span>
-  </div>
-
-  <section class="section" id="features">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">MADE TO DO MORE</div>
-        <h2>Everything your server needs.</h2>
-      </div>
-      <p>
-        One place for the tools that keep your community
-        organized, protected, and running smoothly.
-      </p>
-    </div>
-
-    <div class="feature-grid">
-      <article class="feature-card">
-        <div class="feature-icon">⌘</div>
-        <h3>Moderation</h3>
-        <p>Manage your server and keep conversations under control.</p>
-        <span class="card-arrow">↗</span>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">⬡</div>
-        <h3>Anti-Nuke</h3>
-        <p>Protect your server against suspicious and destructive activity.</p>
-        <span class="card-arrow">↗</span>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">✧</div>
-        <h3>Community</h3>
-        <p>Give members useful features and ways to interact.</p>
-        <span class="card-arrow">↗</span>
-      </article>
-    </div>
-  </section>
-
-  <section class="security-section" id="antinuke">
-    <div class="security-content">
-      <div class="eyebrow">
-        <span class="blue-dot"></span>
-        PROTECTION THAT WORKS FOR YOU
+      <div class="command-grid" id="commandGrid">
+        <div class="empty-state">Loading commands...</div>
       </div>
 
-      <h2>Keep your server<br><span>in safe hands.</span></h2>
+      <p class="directory-note">The command directory is updated as Jurukai grows.</p>
+    </section>
 
-      <p>
-        Jurukai's Anti-Nuke tools help detect suspicious
-        bursts of destructive server activity and respond
-        using your configured protections.
-      </p>
+    <section class="final-cta" id="support">
+      <span class="eyebrow">YOUR COMMUNITY DESERVES BETTER</span>
+      <h2>Take control<br>with <span>Jurukai.</span></h2>
+      <p>Everything your Discord server needs, in one place.</p>
+      <a href="#commands" class="button-primary">Explore commands <span>→</span></a>
+    </section>
+  </main>
 
-      <a href="#commands" class="text-link">
-        Explore Anti-Nuke commands →
-      </a>
-    </div>
+  <footer class="footer">
+    <a href="#home" class="logo">
+      <span class="logo-mark">J</span>
+      <span>jurukai</span>
+    </a>
+    <span>Made for better communities.</span>
+    <a href="#home">Back to top ↑</a>
+  </footer>
 
-    <div class="security-panel">
-      <div class="panel-heading">
-        <span>PROTECTION OVERVIEW</span>
-        <span class="panel-status">● READY TO CONFIGURE</span>
-      </div>
-
-      <div class="protection-item">
-        <span class="protection-icon">▦</span>
-        <div>
-          <strong>Channel protection</strong>
-          <small>Channel create, delete & update</small>
-        </div>
-        <span class="arrow">›</span>
-      </div>
-
-      <div class="protection-item">
-        <span class="protection-icon">◇</span>
-        <div>
-          <strong>Role protection</strong>
-          <small>Role create, delete & update</small>
-        </div>
-        <span class="arrow">›</span>
-      </div>
-
-      <div class="protection-item">
-        <span class="protection-icon">♙</span>
-        <div>
-          <strong>Member protection</strong>
-          <small>Ban, kick & bot-add activity</small>
-        </div>
-        <span class="arrow">›</span>
-      </div>
-
-      <div class="panel-footer">
-        Configure protections with Jurukai's prefix commands.
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="commands">
-    <div class="section-heading">
-      <div>
-        <div class="eyebrow">THE COMMAND DIRECTORY</div>
-        <h2>Find your command.</h2>
-      </div>
-      <p>
-        Search Jurukai's prefix commands and browse
-        the tools available to your server.
-      </p>
-    </div>
-
-    <div class="command-toolbar">
-      <input
-        id="commandSearch"
-        type="search"
-        placeholder="Search commands..."
-        aria-label="Search commands"
-      >
-
-      <div class="filters" id="commandFilters">
-        <button class="active" data-filter="all">All</button>
-        <button data-filter="Moderation">Moderation</button>
-        <button data-filter="Anti-Nuke">Anti-Nuke</button>
-        <button data-filter="Community">Community</button>
-        <button data-filter="Utility">Utility</button>
-      </div>
-    </div>
-
-    <div class="command-grid" id="commandGrid">
-      <div class="empty-state">Loading commands...</div>
-    </div>
-
-    <p class="directory-note">
-      New commands will appear here as the directory is updated.
-    </p>
-  </section>
-
-  <section class="bottom-cta" id="support">
-    <div>
-      <div class="eyebrow">READY WHEN YOU ARE</div>
-      <h2>Make your server<br><span>a better place.</span></h2>
-      <p>Discover the tools Jurukai brings to your community.</p>
-    </div>
-
-    <a href="#commands" class="primary-button">Browse commands →</a>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <a href="#home" class="logo">
-    <span class="logo-icon">J</span>
-    JURUKAI
-  </a>
-
-  <span>Built for better Discord communities.</span>
-
-  <a href="#home">Back to top ↑</a>
-</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
