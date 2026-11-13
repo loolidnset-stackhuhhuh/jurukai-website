@@ -4,13 +4,13 @@
     "name": "antinuke",
     "usage": ",antinuke",
     "category": "Anti-Nuke",
-    "description": "View and manage your server's Anti-Nuke protection."
+    "description": "View the Anti-Nuke command help."
   },
   {
     "name": "antinuke enable",
     "usage": ",antinuke enable",
     "category": "Anti-Nuke",
-    "description": "Enable Anti-Nuke protection for your server."
+    "description": "Enable Anti-Nuke protection."
   },
   {
     "name": "antinuke disable",
@@ -19,39 +19,93 @@
     "description": "Disable Anti-Nuke protection."
   },
   {
-    "name": "antinuke admins",
-    "usage": ",antinuke admins",
+    "name": "antinuke protection list",
+    "usage": ",antinuke protection list",
     "category": "Anti-Nuke",
-    "description": "Manage users authorized as Anti-Nuke administrators."
+    "description": "View all Anti-Nuke protection settings."
   },
   {
-    "name": "antinuke staff",
-    "usage": ",antinuke staff",
+    "name": "antinuke protection",
+    "usage": ",antinuke protection <name> on/off",
     "category": "Anti-Nuke",
-    "description": "Manage Anti-Nuke staff access."
+    "description": "Enable or disable an individual protection."
   },
   {
-    "name": "antinuke whitelist",
-    "usage": ",antinuke whitelist",
+    "name": "antinuke threshold list",
+    "usage": ",antinuke threshold list",
     "category": "Anti-Nuke",
-    "description": "Manage trusted users and whitelist exceptions."
+    "description": "View protection action thresholds."
   },
   {
-    "name": "antinuke blacklist",
-    "usage": ",antinuke blacklist",
+    "name": "antinuke threshold",
+    "usage": ",antinuke threshold <name> <amount> <seconds>",
     "category": "Anti-Nuke",
-    "description": "Manage users blocked from trusted access."
+    "description": "Configure how many actions trigger protection."
   },
   {
-    "name": "antinuke logs",
-    "usage": ",antinuke logs",
+    "name": "antinuke log",
+    "usage": ",antinuke log #channel",
     "category": "Anti-Nuke",
-    "description": "Configure Anti-Nuke logging."
+    "description": "Set the Anti-Nuke log channel."
   },
   {
-    "name": "antinuke punishment",
-    "usage": ",antinuke punishment",
+    "name": "antinuke log disable",
+    "usage": ",antinuke log disable",
     "category": "Anti-Nuke",
-    "description": "Configure the punishment used when protection is triggered."
+    "description": "Disable Anti-Nuke logging."
+  },
+  {
+    "name": "antinuke admin add",
+    "usage": ",antinuke admin add @user",
+    "category": "Anti-Nuke",
+    "description": "Add an Anti-Nuke administrator."
+  },
+  {
+    "name": "antinuke admin remove",
+    "usage": ",antinuke admin remove @user",
+    "category": "Anti-Nuke",
+    "description": "Remove an Anti-Nuke administrator."
+  },
+  {
+    "name": "antinuke admin list",
+    "usage": ",antinuke admin list",
+    "category": "Anti-Nuke",
+    "description": "View Anti-Nuke administrators."
+  },
+  {
+    "name": "antinuke whitelist add",
+    "usage": ",antinuke whitelist add @user",
+    "category": "Anti-Nuke",
+    "description": "Add a trusted user to the whitelist."
+  },
+  {
+    "name": "antinuke whitelist remove",
+    "usage": ",antinuke whitelist remove @user",
+    "category": "Anti-Nuke",
+    "description": "Remove a user from the whitelist."
+  },
+  {
+    "name": "antinuke whitelist list",
+    "usage": ",antinuke whitelist list",
+    "category": "Anti-Nuke",
+    "description": "View whitelisted users."
+  },
+  {
+    "name": "antinuke blacklist add",
+    "usage": ",antinuke blacklist add @user",
+    "category": "Anti-Nuke",
+    "description": "Blacklist a user from Anti-Nuke access."
+  },
+  {
+    "name": "antinuke blacklist remove",
+    "usage": ",antinuke blacklist remove @user",
+    "category": "Anti-Nuke",
+    "description": "Remove a user from the blacklist."
+  },
+  {
+    "name": "antinuke blacklist list",
+    "usage": ",antinuke blacklist list",
+    "category": "Anti-Nuke",
+    "description": "View blacklisted users."
   }
 ]
